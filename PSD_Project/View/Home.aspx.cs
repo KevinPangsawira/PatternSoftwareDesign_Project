@@ -1,5 +1,4 @@
-﻿using PSD_Project.Handler;
-using PSD_Project.Model;
+﻿using PSD_Project.Controller;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,48 +10,23 @@ namespace PSD_Project.View
 {
     public partial class Home : System.Web.UI.Page
     {
-        LoginHandler loginHandler = new LoginHandler();
+        JewelController jewelController = new JewelController();
         protected void Page_Load(object sender, EventArgs e)
         {
-            MsUser user = new MsUser();
-            if (Session["user"] == null && Request.Cookies["user_cookie"] == null)
-            {
-                //Response.Redirect("Home.aspx");
-            }
+            bindData();
 
-            else
-            {
-                if (Session["user"] == null)
-                {
-                    int id = int.Parse(Request.Cookies["user_cookie"].Value);
-                    user = loginHandler.getUserById(id);
-                    Session["user"] = user;
-                }
-                else
-                {
-                    user = (MsUser)Session["user"];
+        }
 
-                }
-            }
+        public void bindData()
+        {
+            GridView1.DataSource = jewelController.getAllJewels();
+            GridView1.DataBind();
+        }
 
-            if ( user.UserName != null) userNow.Text = user.UserName;
-
-            if (user.UserRole.Equals("Customer"))
-            {
-                loginNav.Visible = false;
-                registerNav.Visible = false;
-                addNav.Visible = false;
-                reportsNav.Visible = false;
-                handleOrdersNav.Visible = false;
-            }
-            else if (user.UserRole.Equals("Admin"))
-            {
-                loginNav.Visible = false;
-                registerNav.Visible = false;
-                myOrdersNav.Visible = false;
-            }
-
-
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            string id = e.CommandArgument.ToString();
+            Response.Redirect("ShowDetails.aspx?jewelId="+id);
         }
     }
 }

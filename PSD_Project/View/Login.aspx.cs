@@ -10,10 +10,11 @@ namespace PSD_Project.View
 {
     public partial class Login : System.Web.UI.Page
     {
-        LoginController loginController = new LoginController();
+        //LoginController loginController = new LoginController();
+        UserController userController = new UserController();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+          
         }
 
         protected void loginBtn_Click(object sender, EventArgs e)
@@ -21,15 +22,15 @@ namespace PSD_Project.View
             string email = emailTB.Text;
             string password = passwordTB.Text;
             bool rememberMe = rememberMeCB.Checked;
-            string response = loginController.validationLogin(email, password);
+            string response = userController.validationLogin(email, password);
             if ( response.Equals(""))
             {
 
-                Session["user"] = loginController.getUser(email, password);
+                Session["user"] = userController.getUser(email, password);
 
                 if (rememberMe) { 
                     HttpCookie cookie = new HttpCookie("user_cookie");
-                    cookie.Value = (loginController.getUser(email, password).UserID).ToString();
+                    cookie.Value = (userController.getUser(email, password).UserID).ToString();
                     cookie.Expires = DateTime.Now.AddDays(1);
                     Response.Cookies.Add(cookie);
 

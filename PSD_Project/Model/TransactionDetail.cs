@@ -15,8 +15,8 @@ namespace PSD_Project.Model
     public partial class TransactionDetail
     {
         public int TransactionID { get; set; }
-        public Nullable<int> JewelID { get; set; }
-        public Nullable<int> Quantity { get; set; }
+        public int JewelID { get; set; }
+        public int Quantity { get; set; }
     
         public virtual MsJewel MsJewel { get; set; }
         public virtual TransactionHeader TransactionHeader { get; set; }

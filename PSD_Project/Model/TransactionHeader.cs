@@ -15,8 +15,8 @@ namespace PSD_Project.Model
     public partial class TransactionHeader
     {
         public int TransactionID { get; set; }
-        public Nullable<int> UserID { get; set; }
-        public Nullable<System.DateTime> TransactionDate { get; set; }
+        public int UserID { get; set; }
+        public System.DateTime TransactionDate { get; set; }
         public string PaymentMethod { get; set; }
         public string TransactionStatus { get; set; }
     

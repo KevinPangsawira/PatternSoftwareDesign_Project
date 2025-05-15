@@ -18,7 +18,7 @@ namespace PSD_Project.Repository
         public void createUser(string email, string username, string pw,
             string gender, DateTime dob)
         {
-            MsUser user = UserFactory.createUser(email, username, pw, gender, dob);
+            MsUser user = userFactory.createUser(email, username, pw, gender, dob);
             db.MsUsers.Add(user);
             db.SaveChanges();
         }

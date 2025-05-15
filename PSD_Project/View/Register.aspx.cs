@@ -10,7 +10,8 @@ namespace PSD_Project.View
 {
     public partial class Register : System.Web.UI.Page
     {
-        RegisterController userController = new RegisterController();
+        //RegisterController userController = new RegisterController();
+        UserController userController = new UserController();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

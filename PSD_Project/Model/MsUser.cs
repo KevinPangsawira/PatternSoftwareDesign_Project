@@ -24,7 +24,7 @@ namespace PSD_Project.Model
         public string UserName { get; set; }
         public string UserPassword { get; set; }
         public string UserEmail { get; set; }
-        public Nullable<System.DateTime> UserDOB { get; set; }
+        public System.DateTime UserDOB { get; set; }
         public string UserGender { get; set; }
         public string UserRole { get; set; }
     
