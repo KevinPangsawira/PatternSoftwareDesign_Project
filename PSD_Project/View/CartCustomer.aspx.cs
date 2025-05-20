@@ -15,9 +15,19 @@ namespace PSD_Project.View
         TransactionController transactionController = new TransactionController();
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            MsUser user = (MsUser)Session["user"];
+            if (user == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
+            else if (user.UserRole.Equals("Admin"))
+            {
+                Response.Redirect("Home.aspx");
+            }
             if (!IsPostBack)
             {
-                MsUser user = (MsUser)Session["user"];
+                //MsUser user = (MsUser)Session["user"];
                 customerCart.Text = user.UserName + "'s Cart";
 
                 GridView1.DataSource = jewelController.getCarts(user.UserID);

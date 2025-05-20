@@ -8,7 +8,7 @@
 </head>
 <body>
     <h2>Edit Jewel:</h2>
-    <%--Belum autentikasi Sesi pastikan admin--%>
+   
     <form id="form1" runat="server">
         <div>
             <asp:Label ID="Label1" runat="server" Text="Jewel Name: "></asp:Label>

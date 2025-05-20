@@ -1,5 +1,6 @@
 ﻿using PSD_Project.Controller;
 using PSD_Project.Handler;
+using PSD_Project.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,15 @@ namespace PSD_Project.View
        JewelController jewelController = new JewelController();
         protected void Page_Load(object sender, EventArgs e)
         {
+            MsUser user = (MsUser)Session["user"];
+            if (user == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
+            else if (user.UserRole.Equals("Customer"))
+            {
+                Response.Redirect("Home.aspx");
+            }
             if (!IsPostBack) { 
 
                 //MsCategory

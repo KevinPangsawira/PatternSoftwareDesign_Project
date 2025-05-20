@@ -3,7 +3,9 @@ using PSD_Project.Model;
 using PSD_Project.Singleton;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 
 namespace PSD_Project.Repository
@@ -57,15 +59,29 @@ namespace PSD_Project.Repository
             return response;
         }
 
-        public string checkPassword(string pw)
+        public string checkPassword( string email,  string pw)
         {
             string response = "";
-            string existPassword = (from u in db.MsUsers where u.UserPassword == pw select u.UserPassword).FirstOrDefault();
+            string existPassword = (from u in db.MsUsers where u.UserPassword == pw && u.UserEmail == email select u.UserPassword).FirstOrDefault();
             if (existPassword == null)
             {
                 response = "Incorrect Password";
             }
             return response;
+        }
+
+        public void changePassword(int userId, string newPassword)
+        {
+            MsUser user = (from x in db.MsUsers
+                           where x.UserID == userId
+                           select x).FirstOrDefault();
+
+            if (user != null)
+            {
+                user.UserPassword = newPassword;
+            }
+            db.SaveChanges();
+
         }
     }
 }

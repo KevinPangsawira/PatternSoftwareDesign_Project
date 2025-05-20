@@ -108,6 +108,7 @@ namespace PSD_Project.View
 
         protected void reportsNav_Click(object sender, EventArgs e)
         {
+           
 
         }
 
@@ -118,12 +119,18 @@ namespace PSD_Project.View
 
         protected void profileNav_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Profile.aspx");
         }
 
         protected void logoutNav_Click(object sender, EventArgs e)
         {
-
+            string[] allCookies = Request.Cookies.AllKeys;
+            foreach (var cookie in allCookies)
+            {
+                Response.Cookies[cookie].Expires = DateTime.Now.AddDays(-1); // delete all cookies
+            }
+            Session.Remove("user");
+            Response.Redirect("Login.aspx");
         }
     }
 }

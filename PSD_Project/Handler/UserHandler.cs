@@ -28,9 +28,9 @@ namespace PSD_Project.Handler
         {
             return userRepo.checkEmail(email);
         }
-        public string validatePassword(string pw)
+        public string validatePassword(string email, string pw)
         {
-            return userRepo.checkPassword(pw);
+            return userRepo.checkPassword(email, pw);
         }
 
         public string emailUnique(string email)
@@ -45,6 +45,14 @@ namespace PSD_Project.Handler
         {
             userRepo.createUser(email, username, password, gender, dob);
 
+            return "success";
+        }
+
+
+
+        public string changePassword(int userId, string newPassword)
+        {
+            userRepo.changePassword(userId, newPassword);
             return "success";
         }
     }

@@ -31,9 +31,14 @@ namespace PSD_Project.Controller
                 return "Username must be between 3 to 25 characters.";
             }
 
-            if (!pw.All(char.IsLetterOrDigit) || pw.Length < 8 || pw.Length > 25)
+            if (!pw.All(char.IsLetterOrDigit) || pw.Length < 8 || pw.Length > 20)
             {
                 return "Only contain alphanumeric and must be between 8 to 20 characters";
+            }
+
+            if (cpw.Equals(""))
+            {
+                return "Confirm password must be filled";
             }
 
             if (!pw.Equals(cpw))
@@ -73,10 +78,12 @@ namespace PSD_Project.Controller
                 return userHandler.validateEmail(email);
             }
 
-            if (!userHandler.validatePassword(password).Equals(""))
+            if (!userHandler.validatePassword(email, password).Equals(""))
             {
-                return userHandler.validatePassword(password);
+                return userHandler.validatePassword(email, password);
             }
+
+            
 
             return response;
 
@@ -96,5 +103,43 @@ namespace PSD_Project.Controller
             return user;
 
         }
+
+        public string changePassword(int userId, string oldPassword, string newPassword, string confirmPassword, string currentPassword)
+        {
+            if (oldPassword.Equals(""))
+            {
+                return "Old Password must be filled";
+            }
+
+            if (!oldPassword.Equals(currentPassword))
+            {
+                return "Must be the same as the current password";
+            }
+
+            if (newPassword.Equals(""))
+            {
+                return "New Password must be filled";
+            }
+
+            if ((!newPassword.All(char.IsLetterOrDigit) || newPassword.Length < 8 || newPassword.Length > 20))
+            {
+                return "Length must be 8 to 25 characters and alphanumeric.";
+            }
+
+            if (confirmPassword.Equals(""))
+            {
+                return "Confirm Password must be filled";
+            }
+
+            if ( !confirmPassword.Equals(newPassword) && !confirmPassword.Equals(""))
+            {
+                return "Confirm Password must be the same as New Password";
+            }
+            
+                return userHandler.changePassword(userId, newPassword);
+        }
+
+
+
     }
 }
