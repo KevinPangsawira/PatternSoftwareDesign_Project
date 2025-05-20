@@ -15,7 +15,7 @@ namespace PSD_Project.Controller
 
         public string register(string email, string username, string pw, string cpw, string gender, DateTime dob)
         {
-            string response = "";
+            //string response = "";
             if (!email.EndsWith("@gmail.com"))
             {
                 return "email format must be @gmail.com and must not be empty";

@@ -53,6 +53,7 @@ namespace PSD_Project.View
                 }
                 else if (user.UserRole.Equals("Admin"))
                 {
+                    cartNav.Visible = false;
                     loginNav.Visible = false;
                     registerNav.Visible = false;
                     myOrdersNav.Visible = false;
@@ -73,6 +74,56 @@ namespace PSD_Project.View
 
 
             }
+        }
+
+        protected void loginNav_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("./Login.aspx");
+        }
+
+        protected void homeNav_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Home.aspx");
+        }
+
+        protected void registerNav_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Register.aspx");
+        }
+
+        protected void cartNav_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("CartCustomer.aspx");
+        }
+
+        protected void myOrdersNav_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MyOrders.aspx");
+        }
+
+        protected void addNav_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AddJewel.aspx");
+        }
+
+        protected void reportsNav_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void handleOrdersNav_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("HandleOrders.aspx");
+        }
+
+        protected void profileNav_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void logoutNav_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

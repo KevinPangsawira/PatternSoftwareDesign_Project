@@ -5,20 +5,32 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h2>Detail Page</h2>
 
-    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False">
+    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False"
+        OnRowCommand="GridView2_RowCommand"
+        OnRowDeleting="GridView2_RowDeleting"
+        OnRowEditing="GridView2_RowEditing"
+        OnRowDataBound="GridView2_RowDataBound" DataKeyNames="JewelID">
+
         <Columns>
-            <asp:BoundField DataField="JewelName" HeaderText="Jewel Name" SortExpression="JewelName" />
-            <asp:BoundField DataField="CategoryName" HeaderText="Jewel Category Name" SortExpression="CategoryName" />
-            <asp:BoundField DataField="BrandName" HeaderText="Brand Name" SortExpression="BrandName" />
-            <asp:BoundField DataField="BrandCountry" HeaderText="Country of Origin" SortExpression="BrandCountry" />
-            <asp:BoundField DataField="BrandClass" HeaderText="Class" SortExpression="BrandClass" />
-            <asp:BoundField DataField="JewelPrice" HeaderText="Price" SortExpression="JewelPrice" />
-            <asp:BoundField DataField="JewelReleaseYear" HeaderText="Release Year" SortExpression="JewelReleaseYear" />
-            <asp:TemplateField HeaderText="Button"></asp:TemplateField>
+            <%--<asp:BoundField DataField="JewelID" HeaderText="Jewel Id" />--%>
+            <asp:BoundField DataField="JewelName" HeaderText="Jewel Name" />
+            <asp:BoundField DataField="MsCategory.CategoryName" HeaderText="Category Name" />
+            <asp:BoundField DataField="MsBrand.BrandName" HeaderText="Brand Name" />
+            <asp:BoundField DataField="MsBrand.BrandCountry" HeaderText="Country of Origin" />
+            <asp:BoundField DataField="MsBrand.BrandClass" HeaderText="Class" />
+            <asp:BoundField DataField="JewelPrice" DataFormatString="${0:N2}" HeaderText="Price" />
+            <asp:BoundField DataField="JewelReleaseYear" HeaderText="Release Year" />
+
+            <asp:TemplateField HeaderText="Action">
+                <ItemTemplate>
+                    <asp:Button ID="addBtn" runat="server" Text="Add to Cart" UseSubmitBehavior="false" CommandName="Add" CommandArgument='<%# Eval("JewelID") %>' />
+                    <asp:Button ID="editBtn" runat="server" Text="Edit" UseSubmitBehavior="false" CommandName="Edit" />
+                    <asp:Button ID="deleteBtn" runat="server" Text="Delete" UseSubmitBehavior="false" CommandName="Delete" />
+                </ItemTemplate>
+            </asp:TemplateField>
         </Columns>
-
-
     </asp:GridView>
+
 
 
 </asp:Content>

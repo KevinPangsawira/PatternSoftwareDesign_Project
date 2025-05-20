@@ -12,16 +12,16 @@
     <form id="form1" runat="server">
         <div>
             <div>
-                <asp:Button ID="homeNav" runat="server" Text="Home" />
-                <asp:Button ID="loginNav" runat="server" Text="Login" />
-                <asp:Button ID="registerNav" runat="server" Text="Register" />
-                <asp:Button ID="cartNav" runat="server" Text="Cart" />
-                <asp:Button ID="myOrdersNav" runat="server" Text="My Orders" />
-                <asp:Button ID="addNav" runat="server" Text="Add Jewel" />
-                <asp:Button ID="reportsNav" runat="server" Text="Reports" />
-                <asp:Button ID="handleOrdersNav" runat="server" Text="Handle Orders" />
-                <asp:Button ID="profileNav" runat="server" Text="Profile" />
-                <asp:Button ID="logoutNav" runat="server" Text="Logout" />
+                <asp:Button ID="homeNav" runat="server" Text="Home" OnClick="homeNav_Click"/>
+                <asp:Button ID="loginNav" runat="server" Text="Login" OnClick="loginNav_Click"/>
+                <asp:Button ID="registerNav" runat="server" Text="Register" OnClick="registerNav_Click"/>
+                <asp:Button ID="cartNav" runat="server" Text="Cart" OnClick="cartNav_Click"/>
+                <asp:Button ID="myOrdersNav" runat="server" Text="My Orders" OnClick="myOrdersNav_Click"/>
+                <asp:Button ID="addNav" runat="server" Text="Add Jewel" OnClick="addNav_Click"/>
+                <asp:Button ID="reportsNav" runat="server" Text="Reports" OnClick="reportsNav_Click"/>
+                <asp:Button ID="handleOrdersNav" runat="server" Text="Handle Orders" OnClick="handleOrdersNav_Click"/>
+                <asp:Button ID="profileNav" runat="server" Text="Profile" OnClick="profileNav_Click"/>
+                <asp:Button ID="logoutNav" runat="server" Text="Logout" OnClick="logoutNav_Click"/>
             </div>
             <br />
                 <asp:Label ID="userNow" runat="server" Text=""></asp:Label>

@@ -7,7 +7,7 @@
         <Columns>
             <asp:BoundField DataField="JewelID" HeaderText="Jewel ID" SortExpression="JewelID" />
             <asp:BoundField DataField="JewelName" HeaderText="Jewel Name" SortExpression="JewelName" />
-            <asp:BoundField DataField="JewelPrice" HeaderText="Jewel Price" SortExpression="JewelPrice" />
+            <asp:BoundField DataField="JewelPrice" HeaderText="Jewel Price" DataFormatString="${0:N2}" SortExpression="JewelPrice" />
            
             <asp:TemplateField HeaderText="Detail">
                 <ItemTemplate>
